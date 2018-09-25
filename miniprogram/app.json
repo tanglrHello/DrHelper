@@ -13,13 +13,40 @@
     "pages/chooseLib/chooseLib",
     "pages/index/CSF-IgG",
     "pages/index/Wells-DVT",
-    "pages/index/Duke"
+    "pages/index/Duke",
+    "pages/index/history",
+    "pages/index/contact"
   ],
   "window": {
-    "backgroundColor": "#F6F6F6",
+    "backgroundColor": "#eeeeee",
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "DrHelper",
     "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#a9b7b7",
+    "selectedColor": "#5CACEE",
+    "borderStyle": "white",
+    "list": [
+      {
+        "selectedIconPath": "images/history_select.png",
+        "iconPath": "images/history.png",
+        "pagePath": "pages/index/history",
+        "text": "最近常用"
+      },
+      {
+        "selectedIconPath": "images/home_select.png",
+        "iconPath": "images/home.png",
+        "pagePath": "pages/index/index",
+        "text": "所有工具"
+      },
+      {
+        "selectedIconPath": "images/contact.png",
+        "iconPath": "images/contact_select.png",
+        "pagePath": "pages/index/contact",
+        "text": "联系我们"
+      }
+    ]
   }
 }

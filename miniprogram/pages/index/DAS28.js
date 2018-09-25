@@ -6,14 +6,28 @@ Page({
    */
   data: {
     result: 0,
-    result_str: ""
+    result_str: "",
+    title: "类风湿关节炎患者病情评价",
+    url: "DAS28"
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    var tmp = wx.getStorageSync('history');
+    var hit = false;
+    var new_history = [{ name: this.data.title, url: this.data.url }];
+    for (var i = 0; i < tmp.length; i++) {
+      if (tmp[i].url != this.data.url) {
+        new_history.push(tmp[i]);
+      }
+    }
 
+    wx.setStorage({
+      key: 'history',
+      data: new_history,
+    });
   },
 
   /**

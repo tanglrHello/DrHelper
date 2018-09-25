@@ -1,7 +1,7 @@
 <!--pages/index/DAS28.wxml-->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="page__hd">
-        <view class="page__title">类风湿关节炎患者病情评价</view>
+        <view class="page__title">{{title}}</view>
         <view class="page__desc">DAS28评分</view>
     </view>
     <view class="page__bd">

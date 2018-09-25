@@ -1,7 +1,8 @@
 <!--pages/index/TIA.wxml-->
 <view class="page">
+  
   <view class="page__hd">
-      <view class="page__title">房颤患者卒中风险评估</view>
+      <view class="page__title">{{title}}</view>
       <view class="page__desc">CHA2DS2-VASc</view>
   </view>
 

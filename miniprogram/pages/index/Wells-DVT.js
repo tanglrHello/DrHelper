@@ -5,6 +5,8 @@ Page({
    * 页面的初始数据
    */
   data: {
+    title: "Wells诊断标准（DVT）",
+    url: "Wells-DVT",
     scroll_height: 200,
     result: 0,
     result_str: "",
@@ -31,6 +33,20 @@ Page({
     this.setData({
       scroll_height: boxHeight
     })
+
+    var tmp = wx.getStorageSync('history');
+    var hit = false;
+    var new_history = [{ name: this.data.title, url: this.data.url }];
+    for (var i = 0; i < tmp.length; i++) {
+      if (tmp[i].url != this.data.url) {
+        new_history.push(tmp[i]);
+      }
+    }
+
+    wx.setStorage({
+      key: 'history',
+      data: new_history,
+    });
   },
 
   /**
@@ -44,7 +60,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-
+    
   },
 
   /**

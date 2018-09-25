@@ -1,7 +1,7 @@
 <!--miniprogram/pages/index/Duke.wxml-->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
     <view class="page__hd">
-        <view class="page__title">Duke 平板运动评分</view>
+        <view class="page__title">Duke平板运动评分</view>
         <view class="page__desc">评估疑似冠心病患者预后</view>
     </view>
     <view class="page__bd">

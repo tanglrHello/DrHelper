@@ -1,7 +1,7 @@
 <!--pages/index/TIA.wxml-->
 <view class="page">
   <view class="page__hd">
-      <view class="page__title">ABCD2评分量表</view>
+      <view class="page__title">{{title}}</view>
       <view class="page__desc">TIA早期卒中风险预测工具</view>
   </view>
 

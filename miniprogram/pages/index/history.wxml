@@ -1,0 +1,11 @@
+<!--miniprogram/pages/index/history.wxml-->
+<view class="btn-area">
+        <view class="weui-cell" wx:for="{{history_data}}" wx:if="{{history_data}}.length>0">
+          <view class="weui-cell__bd">
+            <navigator url="{{item.url}}" class="weui-cell" hover-class="weui-cell_active">{{item.name}}</navigator>
+          </view>
+          <view class="weui-cell__ft">
+            <button class="weui-btn mini-btn" formType="submit" size="mini" id="{{item.url}}" bindtap="delete_history">删除</button>
+          </view>
+        </view>
+</view>
