@@ -1,9 +1,25 @@
 <!--index.wxml-->
 <view class="btn-area">
-  <navigator url="TIA" hover-class="navigator-hover">ABCD2卒中评分量表</navigator>
-  <navigator url="CHA2DS2-VASc" hover-class="navigator-hover">房颤患者卒中风险评估</navigator>
-  <navigator url="DAS28" hover-class="navigator-hover">类风湿关节炎患者病情评价</navigator>
-  <navigator url="CSF-IgG" hover-class="navigator-hover">CSF-IgG指数</navigator>
-  <navigator url="Wells-DVT" hover-class="navigator-hover">Wells诊断标准(DVT)</navigator>
-  <navigator url="Duke" hover-class="navigator-hover">Duke 平板运动评分</navigator>
+        <view class="weui-search-bar">
+            <view class="weui-search-bar__form">
+                <view class="weui-search-bar__box">
+                    <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+                    <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+                    <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+                        <icon type="clear" size="14"></icon>
+                    </view>
+                </view>
+                <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+                    <icon class="weui-icon-search" type="search" size="14"></icon>
+                    <view class="weui-search-bar__text">搜索</view>
+                </label>
+            </view>
+            <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+        </view>
+        <view class="weui-cell" wx:for="{{search_res}}" wx:key="{{item.id}}" wx:if="{{search_res.length > 0}}">
+            <navigator url="{{item.url}}" class="weui-cell" hover-class="weui-cell_active">{{item.name}}</navigator>
+        </view>
+  <view class="weui-cell" wx:for="{{tools}}" wx:key="{{item.id}}" wx:if="{{!inputShowed}}">
+    <navigator url="{{item.url}}" hover-class="navigator-hover">{{item.name}}</navigator>
+  </view>
 </view>
