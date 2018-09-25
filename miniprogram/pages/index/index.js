@@ -15,7 +15,9 @@ Page({
       { id: 2, name: "类风湿关节炎患者病情评价", url: "DAS28" },
       { id: 3, name: "CSF-IgG指数", url: "CSF-IgG" },
       { id: 4, name: "Wells诊断标准(DVT)", url: "Wells-DVT" },
-      { id: 5, name: "Duke平板运动评分", url: "Duke" }
+      { id: 5, name: "Duke平板运动评分", url: "Duke" },
+      { id: 6, name: "系统性红斑狼疮疾病活动度评分(SLEDAI)", url: "SLEDAI"},
+      { id: 7, name: "补钠计算器", url: "addNa"}
     ],
     search_res: []
   },

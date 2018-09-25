@@ -14,6 +14,8 @@
     "pages/index/CSF-IgG",
     "pages/index/Wells-DVT",
     "pages/index/Duke",
+    "pages/index/addNa",
+    "pages/index/SLEDAI",
     "pages/index/history",
     "pages/index/contact"
   ],

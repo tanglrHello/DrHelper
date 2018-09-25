@@ -1,0 +1,66 @@
+<!--pages/index/addNa.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">{{title}}</view>
+        <view class="page__desc"></view>
+    </view>
+    <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <view class="page__bd">
+        <view class="weui-cells__title">请输入以下参数：</view>
+        <form bindsubmit="compute">
+          <view class="weui-cells weui-cells_after-title">
+              <view class="weui-cell weui-cell_input">
+                <radio-group class="radio-group" name="sex">性别：
+                  <label class="radio" wx:for="{{radioItems}}">
+                    <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
+                  </label>
+                </radio-group>
+              </view>
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd" >
+                      <view class="weui-label" style="font-size:x-small;">血Na+（mmol/L）</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入" name="na"/>
+                  </view>
+              </view>
+              
+              <view class="weui-cell weui-cell_input">
+                  <view class="weui-cell__hd">
+                      <view class="weui-label" style="font-size:x-small;">体重（kg）</view>
+                  </view>
+                  <view class="weui-cell__bd">
+                      <input class="weui-input" placeholder="请输入" name="weight"/>
+                  </view>
+              </view>
+              <view class="weui-btn-area">
+                <button class="weui-btn" type="primary" form-type="submit">计算</button>
+              </view>
+          </view>
+        </form>
+        <view class="weui-cells__title">结果：</view>
+        <view class="weui-cells weui-cells_after-title">
+            <view class="weui-cell">
+                <view class="weui-cell__bd">应补钠总量(mmol)</view>
+                <view class="weui-cell__ft">{{na_val}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">应补氯化钠总量(g)</view>
+                <view class="weui-cell__ft">{{na_val}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">应补生理盐水(ml)</view>
+                <view class="weui-cell__ft">{{slys_val}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">应补3%氯化钠(ml)</view>
+                <view class="weui-cell__ft">{{nacl_3_val}}</view>
+            </view>
+            <view class="weui-cell">
+                <view class="weui-cell__bd">应补5%氯化钠(ml)</view>
+                <view class="weui-cell__ft">{{nacl_5_val}}</view>
+            </view>
+        </view>
+    </view>
+    </scroll-view>
+</view>

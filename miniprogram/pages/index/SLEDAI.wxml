@@ -1,0 +1,33 @@
+<!--pages/SLEDAI.wxml-->
+<view class="page">
+  <view class="page__title">{{title}}</view>
+  <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
+    <form bindsubmit="formSubmit" bindreset="formReset">
+      <view class="page-section">
+
+        <view class="weui-cells weui-cells_after-title">
+              <checkbox-group bindchange="checkboxChange">
+                  <label class="weui-cell weui-check__label" wx:for="{{symptoms}}" wx:key="{{item.id}}">
+                      <checkbox class="weui-check" value="{{item.score}}"/>
+                      <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                      </view>
+                      <view class="weui-cell__bd" style="font-size:small">{{item.desc}}（{{item.score}}分）</view>
+                  </label>
+              </checkbox-group>
+          </view>
+      </view>
+      <view class="section">
+        <text>得分：{{result_value}}\n</text>
+        <text>结论：{{result_str}}</text>
+      </view>
+    </form>
+  </scroll-view>
+  <i-tab-bar current="{{ current }}" bindchange="handleChange" fixed="true">
+    <i-tab-bar-item key="homepage" icon="homepage" current-icon="homepage_fill" title="Home"></i-tab-bar-item>
+    <i-tab-bar-item key="group" icon="group" current-icon="group_fill" title="Friends"></i-tab-bar-item>
+    <i-tab-bar-item key="remind" icon="remind" current-icon="remind_fill" count="3" title="Notice"></i-tab-bar-item>
+    <i-tab-bar-item key="mine" icon="mine" current-icon="mine_fill" dot title="My"></i-tab-bar-item>
+</i-tab-bar>
+</view>
