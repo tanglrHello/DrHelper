@@ -6,11 +6,10 @@
     </view>
     <scroll-view scroll-y bindscrolltoupper="upper" bindscrolltolower="lower" bindscroll="scroll" scroll-into-view="{{toView}}" scroll-top="{{scrollTop}}">
     <view class="page__bd">
-        <view class="weui-cells__title">请输入以下参数：</view>
         <form bindsubmit="compute">
           <view class="weui-cells weui-cells_after-title">
               <view class="weui-cell weui-cell_input">
-                <radio-group class="radio-group" name="sex">性别：
+                <radio-group class="radio-group" name="sex" style="font-size:x-small;">性别：
                   <label class="radio" wx:for="{{radioItems}}">
                     <radio value="{{item.value}}" checked="{{item.checked}}"/>{{item.name}}
                   </label>
@@ -34,12 +33,12 @@
                   </view>
               </view>
               <view class="weui-btn-area">
-                <button class="weui-btn" type="primary" form-type="submit">计算</button>
+                <button class="weui-btn" form-type="submit">计算</button>
               </view>
           </view>
         </form>
         <view class="weui-cells__title">结果：</view>
-        <view class="weui-cells weui-cells_after-title">
+        <view class="weui-cells weui-cells_after-title" style="font-size:x-small;">
             <view class="weui-cell">
                 <view class="weui-cell__bd">应补钠总量(mmol)</view>
                 <view class="weui-cell__ft">{{na_val}}</view>

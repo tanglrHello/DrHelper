@@ -2,6 +2,7 @@ Page({
   data: {
     result_value : 0,
     result_str : '',
+    scroll_height: 200,
     symptoms: [
       { id: 1, desc: '癫痫发作：最近开始发作的，除外代谢、感染、药物所致(8分)', score: 8 },
       { id: 2, desc: '精神症状：严重紊乱干扰正常活动。除外尿毒症、药物影响(8分)', score: 8 },
@@ -32,6 +33,13 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let res = wx.getSystemInfoSync();
+    let boxHeight = res.windowHeight - 100;
+
+    this.setData({
+      scroll_height: boxHeight
+    })
+
     var tmp = wx.getStorageSync('history');
     var hit = false;
     var new_history = [{ name: this.data.title, url: this.data.url }];
@@ -50,12 +58,17 @@ Page({
   checkboxChange: function (e) {
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     var sum = 0;
+    var id_score = this.data.symptoms;
     for(var i = 0; i < e.detail.value.length; i++)
     {
-      sum += parseInt(e.detail.value[i]);
+      var id = parseInt(e.detail.value[i]) - 1;
+      var score = id_score[id].score;
+      id_score[id].checked = true;
+      sum += parseInt(score);
     }
     this.setData({
-      result_value: sum
+      result_value: sum,
+      symptoms: id_score
     })
 
     if (sum <= 4 )
