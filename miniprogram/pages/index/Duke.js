@@ -76,7 +76,6 @@ Page({
   },
 
   compute: function (e) {
-    console.log(e.detail.value);
     if (e.detail.value["time"] == "") {
       wx.showModal({
         content: '请填写运动时间',
@@ -101,7 +100,7 @@ Page({
       });
       return;
     }
-    if (e.detail.value["pain_score"] == 0) {
+    if (e.detail.value["pain_score"] == "") {
       wx.showModal({
         content: '请选择平板运动心绞痛指数',
         showCancel: false,
