@@ -1,0 +1,29 @@
+<!--pages/index/TIA.wxml-->
+<view class="page">
+  <view class="page__hd">
+      <view class="page__title">ABCD2评分量表</view>
+      <view class="page__desc">TIA早期卒中风险预测工具</view>
+  </view>
+
+  <view class="page__bd">
+    <scroll-view scroll-y style="height:{{scroll_height}}px;">
+          <view class="weui-cells weui-cells_after-title">
+              <checkbox-group bindchange="checkboxChange">
+                  <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="{{item.id}}">
+                      <checkbox class="weui-check" value="{{item.value}}" checkes="{{item.checked}}"/>
+                      <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                      </view>
+                      <view class="weui-cell__bd" style="font-size:small">{{item.desc}}（{{item.score}}分）</view>
+                  </label>
+              </checkbox-group>
+          </view>
+          
+    </scroll-view>
+    <view class="page__hd">
+      <text>得分：{{result}}\n</text>
+      <text>结论：{{result_str}}</text>
+    </view>
+  </view>
+</view>

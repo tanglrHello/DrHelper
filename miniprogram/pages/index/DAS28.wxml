@@ -1,0 +1,51 @@
+<!--pages/index/DAS28.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">类风湿关节炎患者病情评价</view>
+        <view class="page__desc">DAS28评分</view>
+    </view>
+    <view class="page__bd">
+        <form bindsubmit="compute">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">压痛关节数(个)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="painnum" placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">肿胀关节数(个)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="swellnum" placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">红细胞沉降率ESR(mm/第一小时)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="esr"  placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">患者最近7天类风湿关节炎病情活动性(0-100)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="activity" placeholder="请输入"/>
+                </view>
+            </view>
+
+          <view class="weui-btn-area">
+            <button class="weui-btn" formType="submit">计算</button>
+          </view>
+        </form>
+        <view class="page__hd">
+          <text>得分：{{result}}\n</text>
+          <text>结论：{{result_str}}</text>
+        </view>
+    </view>
+</view>

@@ -1,0 +1,6 @@
+<!--index.wxml-->
+<view class="btn-area">
+  <navigator url="TIA" hover-class="navigator-hover">ABCD2卒中评分量表</navigator>
+  <navigator url="CHA2DS2-VASc" hover-class="navigator-hover">房颤患者卒中风险评估</navigator>
+  <navigator url="DAS28" hover-class="navigator-hover">类风湿关节炎患者病情评价</navigator>
+</view>
