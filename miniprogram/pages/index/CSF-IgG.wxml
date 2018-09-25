@@ -1,0 +1,51 @@
+<!--miniprogram/pages/index/CSF-IgG.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">CSF IgG 指数</view>
+        <view class="page__desc"></view>
+    </view>
+    <view class="page__bd">
+        <form bindsubmit="compute">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">脑脊液免疫球蛋白 G(mg/dl)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="csf-IgG" placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">脑脊液白蛋白(mg/dl) </view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="csf-alb" placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">血清免疫球蛋白 G (mg/dl)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="xq-IgG"  placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">血清白蛋白(g/dl)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="xq-alb" placeholder="请输入"/>
+                </view>
+            </view>
+
+          <view class="weui-btn-area">
+            <button class="weui-btn" formType="submit">计算</button>
+          </view>
+        </form>
+        <view class="page__hd">
+          <text>得分：{{result}}\n</text>
+          <text>结论：{{result_str}}</text>
+        </view>
+    </view>
+</view>

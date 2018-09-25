@@ -1,0 +1,45 @@
+<!--miniprogram/pages/index/Duke.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">Duke 平板运动评分</view>
+        <view class="page__desc">评估疑似冠心病患者预后</view>
+    </view>
+    <view class="page__bd">
+        <form bindsubmit="compute">
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">运动时间(分钟)</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="time" placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">ST段波形偏移(mm) </view>
+                </view>
+                <view class="weui-cell__bd">
+                    <input class="weui-input" name="st" placeholder="请输入"/>
+                </view>
+            </view>
+            <view class="weui-cell weui-cell_input">
+                <view class="weui-cell__hd">
+                    <view class="weui-label">平板运动心绞痛指数</view>
+                </view>
+                <view class="weui-cell__bd">
+                    <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}" name="pain_score">
+                        <view class="weui-input">{{desc}}</view>
+                    </picker>
+                </view>
+            </view>
+            
+          <view class="weui-btn-area">
+            <button class="weui-btn" formType="submit">计算</button>
+          </view>
+        </form>
+        <view class="page__hd">
+          <text>得分：{{result}}\n</text>
+          <text>结论：{{result_str}}</text>
+        </view>
+    </view>
+</view>
