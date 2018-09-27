@@ -7,8 +7,8 @@ Page({
   data: {
     title: "补钠计算器",
     radioItems: [
-      { name: '男', value: 'man', checked: true },
-      { name: '女', value: 'woman' }
+      { id: 1, name: '男', value: 'man', checked: true },
+      { id: 2, name: '女', value: 'woman' }
     ]
   },
 

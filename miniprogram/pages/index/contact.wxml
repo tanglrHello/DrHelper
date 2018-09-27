@@ -4,8 +4,8 @@
       <view class="section__title"></view>
       <view style='width:100%;height:100%;text-align:center;' class="picture-2">    
         <text>\n\n以下是我们的联系方式，欢迎反馈和建议\n\n</text>     
-        <text>E-mail:\n 1025814703@qq.com\n\n微信：\n</text> 
-        <image style='width:50%;' class="infoImage" src="../../images/wechat.png" mode='widthFix'></image>         
+        <text>E-mail:\n 1025814703@qq.com\n\n微信：\nlittlesoup417\n</text> 
+        <image style='width:50%;' class="infoImage" bindtap="previewImage" src="../../images/wechat.png"  mode='widthFix'></image>       
       </view>
   </view>
 </view>

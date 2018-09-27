@@ -11,7 +11,7 @@
                     <view class="weui-label">压痛关节数(个)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="painnum" placeholder="请输入"/>
+                    <input class="weui-input" type="number" name="painnum" placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -19,7 +19,7 @@
                     <view class="weui-label">肿胀关节数(个)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="swellnum" placeholder="请输入"/>
+                    <input class="weui-input" type="number" name="swellnum" placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -27,7 +27,7 @@
                     <view class="weui-label">红细胞沉降率ESR(mm/第一小时)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="esr"  placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="esr"  placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -35,7 +35,7 @@
                     <view class="weui-label">患者最近7天类风湿关节炎病情活动性(0-100)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="activity" placeholder="请输入"/>
+                    <input class="weui-input" type="number" name="activity" placeholder="请输入"/>
                 </view>
             </view>
 

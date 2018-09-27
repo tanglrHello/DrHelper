@@ -17,7 +17,8 @@
     "pages/index/addNa",
     "pages/index/SLEDAI",
     "pages/index/history",
-    "pages/index/contact"
+    "pages/index/contact",
+    "pages/index/RA"
   ],
   "window": {
     "backgroundColor": "#eeeeee",

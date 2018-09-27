@@ -10,14 +10,15 @@ Page({
     inputShowed: false,
     inputVal: "",
     tools: [
-      { id: 0, name: "ABCD2卒中评分量表", url: "TIA"},
-      { id: 1, name: "房颤患者卒中风险评估", url: "CHA2DS2-VASc" },
-      { id: 2, name: "类风湿关节炎患者病情评价", url: "DAS28" },
+      { id: 6, name: "系统性红斑狼疮疾病活动度评分(SLEDAI)", url: "SLEDAI" },
+      { id: 1, name: "房颤患者卒中风险评估(CHA2DS2-VASc)", url: "CHA2DS2-VASc" },
+      { id: 2, name: "类风湿关节炎患者病情评估(DAS28)", url: "DAS28" },
+      {id: 8, name: "类风湿关节炎的诊断", url: "RA"},
       { id: 3, name: "CSF-IgG指数", url: "CSF-IgG" },
       { id: 4, name: "Wells诊断标准(DVT)", url: "Wells-DVT" },
       { id: 5, name: "Duke平板运动评分", url: "Duke" },
-      { id: 6, name: "系统性红斑狼疮疾病活动度评分(SLEDAI)", url: "SLEDAI"},
-      { id: 7, name: "补钠计算器", url: "addNa"}
+      { id: 7, name: "补钠计算器", url: "addNa"},
+      { id: 0, name: "ABCD2卒中评分量表", url: "TIA" }
     ],
     search_res: []
   },

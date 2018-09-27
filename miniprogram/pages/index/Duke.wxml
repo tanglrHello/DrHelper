@@ -11,7 +11,7 @@
                     <view class="weui-label">运动时间(分钟)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="time" placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="time" placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -19,7 +19,7 @@
                     <view class="weui-label">ST段波形偏移(mm) </view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="st" placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="st" placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">

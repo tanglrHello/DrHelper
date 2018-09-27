@@ -11,7 +11,7 @@
                     <view class="weui-label">脑脊液免疫球蛋白 G(mg/dl)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="csf-IgG" placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="csf-IgG" placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -19,7 +19,7 @@
                     <view class="weui-label">脑脊液白蛋白(mg/dl) </view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="csf-alb" placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="csf-alb" placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -27,7 +27,7 @@
                     <view class="weui-label">血清免疫球蛋白 G (mg/dl)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="xq-IgG"  placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="xq-IgG"  placeholder="请输入"/>
                 </view>
             </view>
             <view class="weui-cell weui-cell_input">
@@ -35,7 +35,7 @@
                     <view class="weui-label">血清白蛋白(g/dl)</view>
                 </view>
                 <view class="weui-cell__bd">
-                    <input class="weui-input" name="xq-alb" placeholder="请输入"/>
+                    <input class="weui-input" type="digit" name="xq-alb" placeholder="请输入"/>
                 </view>
             </view>
 
