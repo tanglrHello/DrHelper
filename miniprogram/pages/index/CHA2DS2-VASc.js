@@ -5,7 +5,7 @@ Page({
    * 页面的初始数据
    */
   data: {
-    title: "房颤患者卒中风险评估",
+    title: "房颤患者卒中风险评估(CHA2DS2-VASc)",
     url: "CHA2DS2-VASc",
     scroll_height: 200,
     result: 0,
@@ -18,7 +18,13 @@ Page({
       { id: 4, desc: "糖尿病", score: 1, value: "E" },
       { id: 5, desc: "中风/TIA/血栓史", score: 2, value: "F" },
       { id: 6, desc: "性别为女性", score: 1, value: "G" }
-    ]
+    ],
+
+    title_color: getApp().globalData.title_color,
+    subtitle_color: getApp().globalData.subtitle_color,
+    info_title_color: getApp().globalData.info_title_color,
+    info_bk_color: getApp().globalData.info_bk_color,
+    result_color: getApp().globalData.result_color
   },
 
   /**
@@ -26,7 +32,7 @@ Page({
    */
   onLoad: function (options) {
     let res = wx.getSystemInfoSync();
-    let boxHeight = res.windowHeight - 140;
+    let boxHeight = res.windowHeight - 200;
 
     this.setData({
       scroll_height: boxHeight

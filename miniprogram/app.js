@@ -10,6 +10,12 @@ App({
       })
     }
 
-    this.globalData = {}
+    this.globalData = {
+      title_color: "#c4e3ff",
+      subtitle_color: "#ececff",
+      info_title_color: "#ffd306",
+      info_bk_color: "#ecf5ff",
+      result_color: "#efefef",
+    }
   }
 })

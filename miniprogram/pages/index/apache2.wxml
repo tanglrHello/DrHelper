@@ -1,0 +1,268 @@
+<!--miniprogram/pages/index/apache2.wxml-->
+<!--miniprogram/pages/index/RA.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="weui-article">
+    <view class="page__hd">
+      <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <view class="page__desc"></view>
+    </view>
+    <view class="page__bd">
+      <form bindsubmit="compute">
+        <scroll-view scroll-y style="height:{{scroll_height}}px;">
+          <view class="page__bd">
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: {{age_color}}; background: {{title_color}}">A-年龄：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_age" name="age">
+                        <label class="weui-cell weui-check__label" wx:for="{{ages}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: {{damage_color}}; background: {{title_color}}">B-有严重器官系统功能不全或免疫损害：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_damage" name="damage">
+                        <label class="weui-cell weui-check__label" wx:for="{{damages}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">C-GCS评分：</view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{eye_color}}; background: {{subtitle_color}}">1. 睁眼反应：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_eye" name="eye">
+                        <label class="weui-cell weui-check__label" wx:for="{{eyes}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{speak_color}}; background: {{subtitle_color}}">2. 语言反应：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_speak" name="speak">
+                        <label class="weui-cell weui-check__label" wx:for="{{speak}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{sport_color}}; background: {{subtitle_color}}">3. 运动反应：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_sport" name="sport">
+                        <label class="weui-cell weui-check__label" wx:for="{{sport}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">D-生理指标：</view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{tiwen_color}}; background: {{subtitle_color}}">1. 体温(腋下℃):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_tiwen" name="tiwen">
+                        <label class="weui-cell weui-check__label" wx:for="{{tiwen}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xueya_color}}; background: {{subtitle_color}}">2. 平均血压(mmHg):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xueya" name="xueya">
+                        <label class="weui-cell weui-check__label" wx:for="{{xueya}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xinlv_color}}; background: {{subtitle_color}}">3. 心率(次/分):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xinlv" name="xinlv">
+                        <label class="weui-cell weui-check__label" wx:for="{{xinlv}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{huxi_color}}; background: {{subtitle_color}}">4. 呼吸频率(次/分):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_huxi" name="huxi">
+                        <label class="weui-cell weui-check__label" wx:for="{{huxi}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{pao2_color}}; background: {{subtitle_color}}">5-1. PaO2(mmHg) [FiO小于50%]:</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_pao2" name="pao2">
+                        <label class="weui-cell weui-check__label" wx:for="{{pao2}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{aado2_color}}; background: {{subtitle_color}}">5-2. A-aDO2 [FiO2大于50%]:</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_aado2" name="aado2">
+                        <label class="weui-cell weui-check__label" wx:for="{{aado2}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{dmph_color}}; background: {{subtitle_color}}">6-1. 动脉血PH [有血气值]:</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_dmph" name="dmph">
+                        <label class="weui-cell weui-check__label" wx:for="{{dmph}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xqhco3_color}}; background: {{subtitle_color}}">6-2. 血清HCO3(mmol/L) [无血气值]:</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xqhco3" name="xqhco3">
+                        <label class="weui-cell weui-check__label" wx:for="{{xqhco3}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xqna_color}}; background: {{subtitle_color}}">7. 血清Na(mmol/L):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xqna" name="xqna">
+                        <label class="weui-cell weui-check__label" wx:for="{{xqna}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xqk_color}}; background: {{subtitle_color}}">8. 血清K(mmol/L):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xqk" name="xqk">
+                        <label class="weui-cell weui-check__label" wx:for="{{xqk}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xqjg_color}}; background: {{subtitle_color}}">9. 血清肌酐(mg/dL):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xqjg" name="xqjg">
+                        <label class="weui-cell weui-check__label" wx:for="{{xqjg}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{xqyj_color}}; background: {{subtitle_color}}">10. 血球压积(%):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_xqyj" name="xqyj">
+                        <label class="weui-cell weui-check__label" wx:for="{{xqyj}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-weight: 700; color: {{wbc_color}}; background: {{subtitle_color}}">11. WBC(*1000):</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange_wbc" name="wbc">
+                        <label class="weui-cell weui-check__label" wx:for="{{wbc}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                            </view>
+                        </label>
+                    </radio-group>
+                </view>
+          </view>
+          <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]评分说明：</view>
+          <view class="weui-article" style="background:{{info_bk_color}}">
+            <text decode="{{true}}">
+              1、数据采集应为病人入ICU或抢救开始后24小时内最差值
+              2、B项中“不能手术”应理解为由于病人病情危重而不能接受手术治疗者
+              3、严重器官功能不全指：
+              &emsp;&emsp;①心：心功能4级
+              &emsp;&emsp;②肺：慢性缺氧、阻塞性或限制性通气障碍、运动耐力差
+              &emsp;&emsp;③肾：慢性透洗者
+              &emsp;&emsp;④肝：肝硬化、门脉高压、有上消化道出血史、肝昏迷、肝功能衰竭史
+              4、免疫损害：如接受放疗、化疗、长期或大量激素治疗，有白血病、淋巴瘤、艾滋病等
+              5、D项中的血压值应为平均动脉压=(收缩压+2*舒张压)/3，若有直接动脉压监测则记直接动脉压
+              6、呼吸频率应记录病人的自主呼吸频率
+              7、如果病人是急性肾功能衰竭，则血清肌酐一项分值应在原基础上加倍(*2)
+              8、血清肌酐的单位是μmol/L时，与ml/dL的对应值如下：
+                &emsp;&emsp;0.6mg/DL -- 53μmol/L
+                &emsp;&emsp;0.6~1.4mg/DL -- 53~127μmol/L
+                &emsp;&emsp;1.5~1.9mg/DL -- 128~171μmol/L
+                &emsp;&emsp;2~3.4mg/DL -- 172~304μmol/L
+                &emsp;&emsp;3.5mg/DL -- 305μmol/L
+            </text> 
+          </view>
+        </scroll-view>
+        <view class="weui-btn-area">
+          <button class="weui-btn" formType="submit">计算</button>
+        </view>
+      </form>
+      
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+          <text>每项得分：A-{{Ascore}}, B-{{Bscore}}, C-{{Cscore}}, D-{{Dscore}}\n</text>
+          <text>得分：{{result}}\n</text>
+          <text>结论：{{result_str}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+

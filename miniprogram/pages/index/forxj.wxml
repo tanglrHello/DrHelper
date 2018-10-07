@@ -1,0 +1,10 @@
+<!--miniprogram/pages/index/forxj.wxml-->
+<view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+    <view class="page__hd">
+        <view class="page__title">环保小视频</view>
+        <view class="page__desc"></view>
+    </view>
+    <view class="page__bd" style='width:100%;height:100%;text-align:center;' >
+    <video src="cloud://drhelper-322aa6.6472-drhelper-322aa6/环保小视频.mp4"></video>
+    </view>
+</view>

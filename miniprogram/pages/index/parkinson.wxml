@@ -1,0 +1,65 @@
+<!--miniprogram/pages/index/parkinson.wxml-->
+<view class="page">
+   <view class="weui-article">
+    <view class="page__hd">
+      <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <view class="page__desc"></view>
+    </view>
+  
+    <scroll-view scroll-y style="height:{{scroll_height}}px;">
+        <view class="page-section">
+          <view class="weui-cells weui-cells_after-title">
+                <checkbox-group bindchange="checkboxChange">
+                    <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">诊断标准（必备标准）：</view>
+                    <view class="weui-cells__title" style="font-weight: 700; color: #000000; background: {{subtitle_color}}">1. 运动减少</view>
+                    <label class="weui-cell weui-check__label" wx:for="{{zhenduan1}}" wx:key="{{item.id}}">
+                        <checkbox class="weui-check" value="{{item.id}}"/>
+                        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                        </view>
+                        <view class="weui-cell__bd" style="font-size:normal">{{item.desc}}</view>
+                    </label>
+                    <view class="weui-cells__title" style="font-weight: 700; color: #000000; background: {{subtitle_color}}">2. 至少存在下列一项特征</view>
+                    <label class="weui-cell weui-check__label" wx:for="{{zhenduan2}}" wx:key="{{item.id}}">
+                        <checkbox class="weui-check" value="{{item.id}}"/>
+                        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                        </view>
+                        <view class="weui-cell__bd" style="font-size:normal">{{item.desc}}</view>
+                    </label>
+                    <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">支持标准（必须具备3项或3项以上特征）：</view>
+                        <label class="weui-cell weui-check__label" wx:for="{{zhichi}}" wx:key="{{item.id}}">
+                          <checkbox class="weui-check" value="{{item.id}}"/>
+                          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                          </view>
+                          <view class="weui-cell__bd" style="font-size:normal">{{item.desc}}</view>
+                        </label>
+                    <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">排除标准（不应存在的情况）：</view>
+                        <label class="weui-cell weui-check__label" wx:for="{{paichu}}" wx:key="{{item.id}}">
+                          <checkbox class="weui-check" value="{{item.id}}"/>
+                          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                          </view>
+                          <view class="weui-cell__bd" style="font-size:normal">{{item.desc}}</view>
+                        </label>
+                </checkbox-group>
+            </view>
+        </view>
+        <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>
+        <view class="weui-article" style="background:{{info_bk_color}}">
+              <text decode="{{true}}">
+                &emsp;&emsp;满足任何一项排除标准，可排除帕金森
+                &emsp;&emsp;满足2项必备标准，满足3项或以上支持标准，不存在排除标准，可确诊帕金森
+              </text> 
+        </view>
+    </scroll-view>
+    <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+          <text>结论：{{result_str}}</text>
+    </view>
+  </view>
+</view>

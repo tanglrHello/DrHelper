@@ -1,30 +1,38 @@
 <!--pages/index/TIA.wxml-->
 <view class="page">
-  
-  <view class="page__hd">
-      <view class="page__title">{{title}}</view>
-      <view class="page__desc">CHA2DS2-VASc</view>
-  </view>
-
-  <view class="page__bd">
-    <scroll-view scroll-y style="height:{{scroll_height}}px;">
-          <view class="weui-cells weui-cells_after-title">
-              <checkbox-group bindchange="checkboxChange">
-                  <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="{{item.id}}">
-                      <checkbox class="weui-check" value="{{item.value}}" checkes="{{item.checked}}"/>
-                      <view class="weui-cell__hd weui-check__hd_in-checkbox">
-                          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
-                          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
-                      </view>
-                      <view class="weui-cell__bd" style="font-size:small">{{item.desc}}（{{item.score}}分）</view>
-                  </label>
-              </checkbox-group>
-          </view>
-          
-    </scroll-view>
+  <view class="weui-article">
     <view class="page__hd">
-      <text>得分：{{result}}\n</text>
-      <text>结论：{{result_str}}</text>
+      <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <view class="page__desc"></view>
+    </view>
+
+    <view class="page__bd">
+      <scroll-view scroll-y style="height:{{scroll_height}}px;">
+            <view class="weui-cells weui-cells_after-title">
+                <checkbox-group bindchange="checkboxChange">
+                    <label class="weui-cell weui-check__label" wx:for="{{checkboxItems}}" wx:key="{{item.id}}">
+                        <checkbox class="weui-check" value="{{item.value}}" checkes="{{item.checked}}"/>
+                        <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                            <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                            <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                        </view>
+                        <view class="weui-cell__bd">{{item.desc}}（{{item.score}}分）</view>
+                    </label>
+                </checkbox-group>
+            </view>
+            <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>
+            <view class="weui-article" style="background:{{info_bk_color}}">
+                <text decode="{{true}}">
+                  &emsp;&emsp;0分：可选择阿司匹林或不用抗栓治疗，推荐不抗栓治疗
+                  &emsp;&emsp;1分：可选择华法林或阿司匹林抗凝，但是推荐口服抗凝药治疗
+                  &emsp;&emsp;≥2分：推荐口服抗凝药治疗（如华法林）
+                </text> 
+            </view>
+      </scroll-view>
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+            <text>得分：{{result}}\n</text>
+            <text>结论：{{result_str}}</text>
+      </view>
     </view>
   </view>
 </view>

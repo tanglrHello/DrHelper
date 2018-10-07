@@ -1,4 +1,4 @@
-// miniprogram/pages/index/contact.js
+// miniprogram/pages/index/forxj.js
 Page({
 
   /**
@@ -62,5 +62,5 @@ Page({
    */
   onShareAppMessage: function () {
 
-  },
+  }
 })

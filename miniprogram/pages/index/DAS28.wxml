@@ -1,11 +1,20 @@
 <!--pages/index/DAS28.wxml-->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="weui-article">
     <view class="page__hd">
-        <view class="page__title">{{title}}</view>
-        <view class="page__desc">DAS28评分</view>
+      <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <view class="page__desc"></view>
     </view>
+
     <view class="page__bd">
-        <form bindsubmit="compute">
+      <form bindsubmit="compute">
+        <scroll-view scroll-y style="height:{{scroll_height}}px;">
+            <view class="weui-cell">
+              <view style='width:100%;height:100%;text-align:center;' class="picture-2">    
+                <image style='width:50%;' class="infoImage" src="../../images/das28.png"  mode='widthFix'></image>       
+              </view>
+            </view>
+
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
                     <view class="weui-label">压痛关节数(个)</view>
@@ -14,6 +23,7 @@
                     <input class="weui-input" type="number" name="painnum" placeholder="请输入"/>
                 </view>
             </view>
+            
             <view class="weui-cell weui-cell_input">
                 <view class="weui-cell__hd">
                     <view class="weui-label">肿胀关节数(个)</view>
@@ -38,14 +48,28 @@
                     <input class="weui-input" type="number" name="activity" placeholder="请输入"/>
                 </view>
             </view>
+            <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>
+            <view class="weui-article" style="background:{{info_bk_color}}">
+                <text decode="{{true}}">
+                  小于2.6：病情缓解（remission）
+                  2.6~3.2：疾病低度活动（low activity）
+                  3.2~5.1：疾病活动（moderate activity）
+                  大于5.1：疾病高度活动（high activity）
 
-          <view class="weui-btn-area">
-            <button class="weui-btn" formType="submit">计算</button>
-          </view>
-        </form>
-        <view class="page__hd">
-          <text>得分：{{result}}\n</text>
-          <text>结论：{{result_str}}</text>
-        </view>
+                  △DAS28 > 1.2：治疗反应良好
+                  0.6 &lt; △DAS28 ≤ 1.2：治疗反应一般
+                  △DAS28 ≤ 0.6：治疗无反应
+                </text> 
+            </view>
+        </scroll-view>
+        <view class="weui-btn-area">
+          <button class="weui-btn" formType="submit">计算</button>
+        </view>    
+      </form>
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+        <text>得分：{{result}}\n</text>
+        <text>结论：{{result_str}}</text>
+      </view>
     </view>
+  </view>
 </view>

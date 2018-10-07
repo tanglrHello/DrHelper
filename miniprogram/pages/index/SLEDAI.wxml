@@ -1,26 +1,44 @@
 <!--pages/SLEDAI.wxml-->
 <view class="page">
-  <view class="page__title">{{title}}</view>
-  <scroll-view scroll-y style="height:{{scroll_height}}px;">
-    <form bindsubmit="formSubmit" bindreset="formReset">
-      <view class="page-section">
-        <view class="weui-cells weui-cells_after-title">
-              <checkbox-group bindchange="checkboxChange">
-                  <label class="weui-cell weui-check__label" wx:for="{{symptoms}}" wx:key="{{item.id}}">
-                      <checkbox class="weui-check" value="{{item.id}}"/>
-                      <view class="weui-cell__hd weui-check__hd_in-checkbox">
-                          <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
-                          <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
-                      </view>
-                      <view class="weui-cell__bd" style="font-size:small">{{item.desc}}（{{item.score}}分）</view>
-                  </label>
-              </checkbox-group>
+  <view class="weui-article">
+    <view class="page__hd">
+      <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <view class="page__desc"></view>
+    </view>
+    <view class="page__bd">
+      <scroll-view scroll-y style="height:{{scroll_height}}px;">
+        <form bindsubmit="formSubmit" bindreset="formReset">
+          <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                  <checkbox-group bindchange="checkboxChange">
+                      <label class="weui-cell weui-check__label" wx:for="{{symptoms}}" wx:key="{{item.id}}">
+                          <checkbox class="weui-check" value="{{item.id}}"/>
+                          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                          </view>
+                          <view class="weui-cell__bd">{{item.desc}}（{{item.score}}分）</view>
+                      </label>
+                  </checkbox-group>
+              </view>
           </view>
+        </form>
+        <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>
+        <view class="weui-article" style="background:{{info_bk_color}}">
+            <text style="font-weight:700">注：</text><text>上述计分为前10天之内的症状和检查。\n\n</text>
+            <text style="font-weight:700">SLEDAI积分对SLE病情的判断：</text>
+            <text decode="{{true}}">
+              0-4分：基本无活动
+              5-9分：轻度活动
+              10-14分：中度活动
+              ≥15：重度活动
+            </text> 
+        </view> 
+      </scroll-view>
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+              <text>得分：{{result}}\n</text>
+              <text>结论：{{result_str}}</text>
       </view>
-    </form>
-  </scroll-view>
-  <view class="section">
-        <text>得分：{{result_value}}\n</text>
-        <text>结论：{{result_str}}</text>
+    </view>
   </view>
 </view>

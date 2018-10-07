@@ -1,0 +1,69 @@
+<!--miniprogram/pages/index/IE-Duke.wxml-->
+<view class="page">
+  <view class="weui-article">
+    <view class="page__hd">
+        <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+        <view class="page__desc"></view>
+    </view>
+    <view class="page__bd">
+      <scroll-view scroll-y style="height:{{scroll_height}}px;">
+          <view class="page-section">
+            <view class="weui-cells weui-cells_after-title">
+                  <checkbox-group bindchange="checkboxChange">
+                      <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">主要标准：</view>
+                      <view class="weui-cells__title" style="font-weight: 700; color: #000000; background: {{subtitle_color}}">1. 血培养阳性（符合以下至少一项标准）：</view>
+                      <label class="weui-cell weui-check__label" wx:for="{{xuepeiyang}}" wx:key="{{item.id}}">
+                          <checkbox class="weui-check" value="{{item.id}}"/>
+                          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                          </view>
+                          <view class="weui-cell__bd" style="font-size:small">{{item.desc}}</view>
+                      </label>
+                      <view class="weui-cells__title" style="font-weight: 700; color: #000000; background: {{subtitle_color}}">2. 心内膜受累证据（符合以下至少一项标准）：</view>
+                      <label class="weui-cell weui-check__label" wx:for="{{xinneimo}}" wx:key="{{item.id}}">
+                          <checkbox class="weui-check" value="{{item.id}}"/>
+                          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                          </view>
+                          <view class="weui-cell__bd" style="font-size:small">{{item.desc}}</view>
+                      </label>
+                      <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">次要标准：</view>
+                      <view wx:for="{{sub_rules}}" wx:key="{{item.id}}">
+                          <view class="weui-cells__title" style="font-weight: 700; color: #000000; background: {{subtitle_color}}">{{item.id}}. {{item.title}}：</view>
+                          <label class="weui-cell weui-check__label">
+                            <checkbox class="weui-check" value="{{item.id}}"/>
+                            <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                            </view>
+                            <view class="weui-cell__bd" style="font-size:small">{{item.desc}}</view>
+                          </label>
+                      </view>
+                  </checkbox-group>
+              </view>
+          </view>
+          <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>              <view class="weui-article" style="background:{{info_bk_color}}">
+              <text style="font-weight:700">(1)确诊：</text>
+              <text decode="{{true}}">
+                &emsp;&emsp;①满足2项主要标准
+                &emsp;&emsp;②满足1项主要标准+3项次要标准
+                &emsp;&emsp;③满足5项次要标准
+
+              </text> 
+              <text style="font-weight:700">(2)疑诊：</text>
+              <text decode="{{true}}">
+                &emsp;&emsp;①满足1项主要标准+1项次要标准
+                &emsp;&emsp;②满足3项次要标准
+              </text>
+          </view> 
+      </scroll-view>
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+            <text>满足{{main_num}}项主要标准，满足{{sub_num}}项次要标准\n</text>
+            <text>结论：{{result_str}}</text>
+      </view>
+    </view>
+  </view>
+</view>
+

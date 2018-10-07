@@ -6,6 +6,14 @@ Page({
    */
   data: {
       scroll_height: 200,
+      guanjieshoulei: -1,
+      xueqingxue: -1,
+      jixingqi: -1,
+      duration: -1,
+      guanjie_color: "#000000",
+      xueqingxue_color: "#000000",
+      jixingqi_color: "#000000",
+      duration_color: "#000000",
       array1: [
         { desc: "1个中到大关节", score: 0}, 
         { desc: "2~10个中大关节", score: 1}, 
@@ -28,8 +36,13 @@ Page({
       ],
       result: 0,
       result_str: "",
-      title: "类风湿性关节炎的诊断",
-      url: "RA"
+      title: "类风湿性关节炎的诊断(RA)",
+      url: "RA",
+      title_color: getApp().globalData.title_color,
+      subtitle_color: getApp().globalData.subtitle_color,
+      info_title_color: getApp().globalData.info_title_color,
+      info_bk_color: getApp().globalData.info_bk_color,
+      result_color: getApp().globalData.result_color
   },
 
   /**
@@ -37,7 +50,7 @@ Page({
    */
   onLoad: function (options) {
     let res = wx.getSystemInfoSync();
-    let boxHeight = res.windowHeight - 100;
+    let boxHeight = res.windowHeight - 200;
 
     this.setData({
       scroll_height: boxHeight
@@ -109,119 +122,100 @@ Page({
 
   radioChange1: function (e) {
     var radioItems = this.data.array1;
+    var guanjieshoulei = 0;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].desc == e.detail.value;
+      if (radioItems[i].desc == e.detail.value){
+        radioItems[i].checked = true;
+        guanjieshoulei = radioItems[i].score;
+      }
+      else{
+        radioItems[i].checked = false;
+      } 
     }
 
     this.setData({
-      array1: radioItems
+      array1: radioItems,
+      guanjieshoulei: guanjieshoulei
     });
+    this.compute();
   },
   radioChange2: function (e) {
     var radioItems = this.data.array2;
+    var xueqingxue = 0;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].desc == e.detail.value;
+      if (radioItems[i].desc == e.detail.value){
+        radioItems[i].checked = true;
+        xueqingxue = radioItems[i].score;
+      }
+      else{
+        radioItems[i].checked = false;
+      }      
     }
-
     this.setData({
-      array2: radioItems
+      array2: radioItems,
+      xueqingxue: xueqingxue
     });
+    this.compute();
   },
+
   radioChange3: function (e) {
     var radioItems = this.data.array3;
+    var jixingqi = 0;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].desc == e.detail.value;
+      if (radioItems[i].desc == e.detail.value){
+        radioItems[i].checked = true;
+        jixingqi = radioItems[i].score;
+      }
+      else{
+        radioItems[i].checked = false;
+      }
     }
 
     this.setData({
-      array3: radioItems
+      array3: radioItems,
+      jixingqi: jixingqi
     });
+    this.compute();
   },
   radioChange4: function (e) {
     var radioItems = this.data.array4;
+    var duration = 0;
     for (var i = 0, len = radioItems.length; i < len; ++i) {
-      radioItems[i].checked = radioItems[i].desc == e.detail.value;
+      if (radioItems[i].desc == e.detail.value){
+        radioItems[i].checked = true;
+        duration = radioItems[i].score;
+      }
+      else{
+        radioItems[i].checked = false;
+      }
     }
 
     this.setData({
-      array4: radioItems
+      array4: radioItems,
+      duration: duration
     });
+    this.compute();
   },
-  compute: function (e) {
-    if (e.detail.value["guanjieshoulei"] == "") {
-      wx.showModal({
-        content: '请选择关节受累情况',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      });
-      return;
-    }
-    if (e.detail.value["xueqingxue"] == "") {
-      wx.showModal({
-        content: '请选择血清学',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      });
-      return;
-    }
-    if (e.detail.value["jixingqi"] == "") {
-      wx.showModal({
-        content: '请选择急性期反应物',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      });
-      return;
-    }
-    if (e.detail.value["duration"] == "") {
-      wx.showModal({
-        content: '请选择症状持续时间',
-        showCancel: false,
-        success: function (res) {
-          if (res.confirm) {
-            console.log('用户点击确定')
-          }
-        }
-      });
-      return;
-    }
+  compute: function () {
+    if (this.data.guanjieshoulei == -1) this.setData({ guanjie_color: "#ff0000" });
+    else this.setData({ guanjie_color: "#000000" });
+    if (this.data.xueqingxue == -1) this.setData({ xueqingxue_color: "#ff0000" });
+    else this.setData({ xueqingxue_color: "#000000" });
+    if (this.data.jixingqi == -1) this.setData({ jixingqi_color: "#ff0000" });
+    else this.setData({ jixingqi_color: "#000000" });
+    if (this.data.duration == -1) this.setData({ duration_color: "#ff0000" });
+    else this.setData({ duration_color: "#000000" });
 
-    var guanjieshoulei = e.detail.value["guanjieshoulei"];
-    var xueqingxue = e.detail.value["xueqingxue"];
-    var jixingqi = e.detail.value["jixingqi"];
-    var duration = e.detail.value["duration"];
+    var guanjieshoulei = this.data.guanjieshoulei;
+    var xueqingxue = this.data.xueqingxue;
+    var jixingqi = this.data.jixingqi;
+    var duration = this.data.duration;
 
     var sum = 0;
-    for(var i = 0; i < this.data.array1.length; i++)
-    {
-      console.log(this.data.array1[i].desc == guanjieshoulei);
-      if(this.data.array1[i].desc == guanjieshoulei) 
-      {
-        sum += this.data.array1[i].score;
-        console.log(sum);
-      }
-    }
-    for (var i = 0; i < this.data.array2.length; i++) {
-      if (this.data.array2[i].desc == xueqingxue) sum += this.data.array2[i].score;
-    }
-    for (var i = 0; i < this.data.array3.length; i++) {
-      if (this.data.array3[i].desc == jixingqi) sum += this.data.array3[i].score;
-    }
-    for (var i = 0; i < this.data.array4.length; i++) {
-      if (this.data.array4[i].desc == duration) sum += this.data.array4[i].score;
-    }
-
+    if(guanjieshoulei != -1) sum += guanjieshoulei;
+    if(xueqingxue != -1) sum += xueqingxue;
+    if(jixingqi != -1) sum += jixingqi;
+    if(duration != -1) sum += duration;
     this.setData({
       result: sum
     })

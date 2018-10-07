@@ -7,14 +7,27 @@ Page({
   data: {
     result: 0,
     result_str: "",
-    title: "类风湿关节炎患者病情评价",
-    url: "DAS28"
+    scroll_height: 200,
+    title: "类风湿关节炎患者病情评价(DAS28)",
+    url: "DAS28",
+    title_color: getApp().globalData.title_color,
+    subtitle_color: getApp().globalData.subtitle_color,
+    info_title_color: getApp().globalData.info_title_color,
+    info_bk_color: getApp().globalData.info_bk_color,
+    result_color: getApp().globalData.result_color
   },
 
   /**
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    let res = wx.getSystemInfoSync();
+    let boxHeight = res.windowHeight - 250;
+
+    this.setData({
+      scroll_height: boxHeight
+    })
+
     var tmp = wx.getStorageSync('history');
     var hit = false;
     var new_history = [{ name: this.data.title, url: this.data.url }];

@@ -18,7 +18,14 @@
     "pages/index/SLEDAI",
     "pages/index/history",
     "pages/index/contact",
-    "pages/index/RA"
+    "pages/index/RA",
+    "pages/index/apache2",
+    "pages/index/forxj",
+    "pages/index/IE-Duke",
+    "pages/index/PESI",
+    "pages/index/parkinson",
+    "pages/index/as1966",
+    "pages/index/as1984"
   ],
   "window": {
     "backgroundColor": "#eeeeee",

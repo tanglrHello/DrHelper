@@ -1,71 +1,79 @@
 <!--miniprogram/pages/index/RA.wxml-->
-<!--miniprogram/pages/index/Duke.wxml-->
 <view class="page" xmlns:wx="http://www.w3.org/1999/xhtml">
+  <view class="weui-article">
     <view class="page__hd">
-        <view class="page__title">{{title}}</view>
-        <view class="page__desc">2010年ACR/EULAR的RA分类标准</view>
+      <view class="page__title" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <view class="page__desc">2010年ACR/EULAR的RA分类标准</view>
     </view>
-    <scroll-view scroll-y style="height:{{scroll_height}}px;">
-      <view class="page__bd">
-          <form bindsubmit="compute">
-              <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000">关节受累情况(0~5分)：</view>
-              <view class="weui-cells weui-cells_after-title">
-                  <radio-group bindchange="radioChange1" name="guanjieshoulei">
-                      <label class="weui-cell weui-check__label" wx:for="{{array1}}" wx:key="value">
-                          <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
-                          <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
-                          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-                              <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
-                        </view>
-                      </label>
-                  </radio-group>
+    <view class="page__bd">
+      <scroll-view scroll-y style="height:{{scroll_height}}px;">
+        <view class="page__bd">
+            <form>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: {{guanjie_color}}; background: {{title_color}}">关节受累情况(0~5分)：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange1" name="guanjieshoulei">
+                        <label class="weui-cell weui-check__label" wx:for="{{array1}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: {{xueqingxue_color}}; background: {{title_color}}">血清学(0~3分)：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange2" name="xueqingxue">
+                        <label class="weui-cell weui-check__label" wx:for="{{array2}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: {{jixingqi_color}}; background: {{title_color}}">急性期反应物(0~1分)：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange3" name="jixingqi">
+                        <label class="weui-cell weui-check__label" wx:for="{{array3}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+                <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: {{duration_color}}; background: {{title_color}}">症状持续时间(0~1分)：</view>
+                <view class="weui-cells weui-cells_after-title">
+                    <radio-group bindchange="radioChange4" name="duration">
+                        <label class="weui-cell weui-check__label" wx:for="{{array4}}" wx:key="value">
+                            <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
+                            <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
+                            <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
+                                <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
+                          </view>
+                        </label>
+                    </radio-group>
+                </view>
+
+              <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>
+              <view class="weui-article" style="background:{{info_bk_color}}">
+                  <text decode="{{true}}">
+                    小于6分：不可肯定RA诊断
+                    不小于6分：可肯定RA诊断
+                  </text> 
               </view>
-              <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000">血清学(0~3分)：</view>
-              <view class="weui-cells weui-cells_after-title">
-                  <radio-group bindchange="radioChange2" name="xueqingxue">
-                      <label class="weui-cell weui-check__label" wx:for="{{array2}}" wx:key="value">
-                          <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
-                          <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
-                          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-                              <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
-                        </view>
-                      </label>
-                  </radio-group>
-              </view>
-              <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000">急性期反应物(0~1分)：</view>
-              <view class="weui-cells weui-cells_after-title">
-                  <radio-group bindchange="radioChange3" name="jixingqi">
-                      <label class="weui-cell weui-check__label" wx:for="{{array3}}" wx:key="value">
-                          <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
-                          <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
-                          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-                              <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
-                        </view>
-                      </label>
-                  </radio-group>
-              </view>
-              <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000">症状持续时间(0~1分)：</view>
-              <view class="weui-cells weui-cells_after-title">
-                  <radio-group bindchange="radioChange4" name="duration">
-                      <label class="weui-cell weui-check__label" wx:for="{{array4}}" wx:key="value">
-                          <radio class="weui-check" value="{{item.desc}}" checked="{{item.checked}}"/>
-                          <view class="weui-cell__bd">{{item.desc}}({{item.score}}分)</view>
-                          <view class="weui-cell__ft weui-cell__ft_in-radio" wx:if="{{item.checked}}">
-                              <icon class="weui-icon-radio" type="success_no_circle" size="16"></icon>
-                        </view>
-                      </label>
-                  </radio-group>
-              </view>
-              
-            <view class="weui-btn-area">
-              <button class="weui-btn" formType="submit">计算</button>
-            </view>
-          </form>
-          
-      </view>
-    </scroll-view>
-    <view class="page__hd">
+            </form>
+        </view>
+      </scroll-view>
+    
+    
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
         <text>得分：{{result}}\n</text>
         <text>结论：{{result_str}}</text>
+      </view>
     </view>
+  </view>
 </view>

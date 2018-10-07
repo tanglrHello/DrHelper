@@ -1,8 +1,13 @@
 Page({
   data: {
-    result_value : 0,
+    result : 0,
     result_str : '',
     scroll_height: 200,
+    title_color: getApp().globalData.title_color,
+    subtitle_color: getApp().globalData.subtitle_color,
+    info_title_color: getApp().globalData.info_title_color,
+    info_bk_color: getApp().globalData.info_bk_color,
+    result_color: getApp().globalData.result_color,
     symptoms: [
       { id: 1, desc: '癫痫发作：最近开始发作的，除外代谢、感染、药物所致', score: 8 },
       { id: 2, desc: '精神症状：严重紊乱干扰正常活动。除外尿毒症、药物影响', score: 8 },
@@ -26,7 +31,8 @@ Page({
       { id: 20, desc: '血小板降低 ＜100×109／L', score: 1 },
       { id: 21, desc: '白细胞减少＜3×109／L，需除外药物因素', score: 1 }
     ],
-    title: "系统性红斑狼疮疾病活动度评分(SLEDAI)"
+    title: "系统性红斑狼疮疾病活动度评分(SLEDAI)",
+    url: "SLEDAI"
   },
 
   /**
@@ -34,7 +40,7 @@ Page({
    */
   onLoad: function (options) {
     let res = wx.getSystemInfoSync();
-    let boxHeight = res.windowHeight - 100;
+    let boxHeight = res.windowHeight - 200;
 
     this.setData({
       scroll_height: boxHeight
@@ -59,6 +65,10 @@ Page({
     console.log('checkbox发生change事件，携带value值为：', e.detail.value)
     var sum = 0;
     var id_score = this.data.symptoms;
+    for(var i = 0; i < id_score.length; i++)
+    {
+      id_score[i].checked = false;
+    }
     for(var i = 0; i < e.detail.value.length; i++)
     {
       var id = parseInt(e.detail.value[i]) - 1;
@@ -67,7 +77,7 @@ Page({
       sum += parseInt(score);
     }
     this.setData({
-      result_value: sum,
+      result: sum,
       symptoms: id_score
     })
 

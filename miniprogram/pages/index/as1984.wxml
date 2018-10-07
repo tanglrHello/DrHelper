@@ -1,0 +1,71 @@
+<!--miniprogram/pages/index/as1984.wxml-->
+<view class="page">
+  <view class="weui-article">
+    <view class="weui-article__h1" style="font-weight:700; font-size:x-large">{{title}}</view>
+      <scroll-view scroll-y style="height:{{scroll_height}}px;"> 
+            <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">临床标准：</view>
+            <view class="weui-cells weui-cells_after-title">
+                  <checkbox-group bindchange="checkboxChange">        
+                      <label class="weui-cell weui-check__label" wx:for="{{linchuang}}" wx:key="{{item.id}}">
+                          <checkbox class="weui-check" value="{{item.id}}"/>
+                          <view class="weui-cell__hd weui-check__hd_in-checkbox">
+                              <icon class="weui-icon-checkbox_circle" type="circle" size="23" wx:if="{{!item.checked}}"></icon>
+                              <icon class="weui-icon-checkbox_success" type="success" size="23" wx:if="{{item.checked}}"></icon>
+                          </view>
+                          <view class="weui-cell__bd">{{item.desc}}</view>
+                      </label>
+                  </checkbox-group>
+            </view>
+                      
+            <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">骶髂关节X线表现分级（左侧）：</view>
+            <view class="weui-cells weui-cells_after-title">
+                <radio-group bindchange="radioChange1" name="diqia_left">
+                    <label class="weui-cell weui-check__label" wx:for="{{diqia_left}}" wx:key="value">
+                        <radio class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>
+                        <view class="weui-cell__bd">{{item.desc}}</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-radio">
+                            <icon class="weui-icon-radio" type="success_no_circle" size="16"  wx:if="{{item.checked}}"></icon>
+                        </view>
+                    </label>
+                </radio-group>
+            </view>
+
+            <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{title_color}}">骶髂关节X线表现分级（右侧）：</view>
+            <view class="weui-cells weui-cells_after-title">
+                <radio-group bindchange="radioChange2" name="diqia_right">
+                    <label class="weui-cell weui-check__label" wx:for="{{diqia_right}}" wx:key="value">
+                        <radio class="weui-check" value="{{item.id}}" checked="{{item.checked}}"/>
+                        <view class="weui-cell__bd">{{item.desc}}</view>
+                        <view class="weui-cell__ft weui-cell__ft_in-radio">
+                            <icon class="weui-icon-radio" type="success_no_circle" size="16"  wx:if="{{item.checked}}"></icon>
+                        </view>
+                    </label>
+                </radio-group>
+            </view> 
+
+            <view class="weui-cells__title" style="font-size: large; font-weight: 700; color: #000000; background: {{info_title_color}}">[FYI]诊断标准：</view>            
+            <view class="weui-article" style="background:{{info_bk_color}}">
+                <text style="font-weight:700">放射学标准：</text>
+                <text decode="{{true}}">
+                  &emsp;&emsp;双侧≥2级或单侧3~4级骶髂关节炎
+
+                </text>
+                <text style="font-weight:700">(1)肯定AS：</text>
+                <text decode="{{true}}">
+                  &emsp;&emsp;符合放射学标准和1项（及以上）临床标准
+
+                </text> 
+                <text style="font-weight:700">(2)可能AS：</text>
+                <text decode="{{true}}">
+                  &emsp;&emsp;①符合三项临床标准，
+                  &emsp;&emsp;②符合放射学标准而不伴任何临床标准
+                </text>
+            </view> 
+      </scroll-view>
+      <view class="section" style="background: {{result_color}}; font-size:large; padding:10px">
+            <text>结论：{{result_str}}</text>
+      </view>
+  </view>
+</view>
+
+
